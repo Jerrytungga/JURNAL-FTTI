@@ -61,4 +61,14 @@ class UserController extends Controller
             ->route("users.index")
             ->with("success", "Pengguna berhasil diperbarui!");
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id); // Mengambil pengguna berdasarkan ID
+        $user->delete(); // Menghapus pengguna
+
+        return redirect()
+            ->route("users.index")
+            ->with("success", "Pengguna berhasil dihapus!"); // Mengarahkan kembali dengan pesan sukses
+    }
 }
